@@ -1,0 +1,1 @@
+docker build -t frankleeeee/cuda-conda:10.2 .
