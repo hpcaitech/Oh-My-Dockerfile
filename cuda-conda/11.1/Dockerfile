@@ -4,7 +4,7 @@ FROM nvidia/cuda:11.1.1-cudnn8-devel-ubi8
 SHELL ["/bin/bash", "--login", "-c"]
 
 # install tools
-RUN yum install -y wget vim git python38
+RUN yum install -y wget vim git gettext unzip 
 
 # install conda
 RUN cd /opt \
