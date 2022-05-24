@@ -1,1 +1,1 @@
-docker build -t frankleeeee/pypi-server:latest .
+docker build -t hpcaitech/pypi-server:latest .

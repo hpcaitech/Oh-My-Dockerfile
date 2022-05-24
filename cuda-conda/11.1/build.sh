@@ -1,1 +1,1 @@
-docker build -t frankleeeee/cuda-conda:11.1 .
+docker build -t hpcaitech/cuda-conda:11.1 .

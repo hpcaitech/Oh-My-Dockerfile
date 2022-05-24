@@ -1,4 +1,4 @@
-FROM frankleeeee/pytorch-cuda:1.10.1-11.3.0
+FROM hpcaitech/pytorch-cuda:1.10.1-11.3.0
 
 # install dependencies
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple \
