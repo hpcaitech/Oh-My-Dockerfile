@@ -1,0 +1,1 @@
+docker build -t hpcaitech/docker-in-docker:latest .
