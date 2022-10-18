@@ -1,10 +1,12 @@
-FROM nvidia/cuda:11.6.1-cudnn8-devel-rockylinux8
+FROM nvidia/cuda:11.6.1-cudnn8-devel-ubuntu20.04
 
-# Make RUN commands use `bash --login`:
-SHELL ["/bin/bash", "--login", "-c"]
+ARG DEBIAN_FRONTEND=noninteractive
 
 # install tools
-RUN yum install -y wget vim git gettext unzip 
+RUN apt update -y \
+  && apt install -y software-properties-common \
+  && apt update -y \
+  && apt install -y wget vim git openssh-server build-essential libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip libz-dev
 
 # install conda
 RUN cd /opt \
