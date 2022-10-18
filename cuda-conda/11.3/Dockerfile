@@ -1,10 +1,11 @@
-FROM nvidia/cuda:11.3.0-cudnn8-devel-ubi8
+FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
 
-# Make RUN commands use `bash --login`:
-SHELL ["/bin/bash", "--login", "-c"]
-
+ARG DEBIAN_FRONTEND=noninteractive
 # install tools
-RUN yum install -y wget vim git gettext unzip 
+RUN apt update -y \
+  && apt install -y software-properties-common \
+  && apt update -y \
+  && apt install -y wget vim git openssh-server build-essential libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip libz-dev
 
 # install conda
 RUN cd /opt \
@@ -17,4 +18,3 @@ RUN mkdir /workspace
 ENV PATH "/opt/conda/bin:$PATH"
 ENV CUDA_HOME "/usr/local/cuda"
 WORKDIR /workspace
-

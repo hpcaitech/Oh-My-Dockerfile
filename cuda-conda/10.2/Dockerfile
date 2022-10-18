@@ -1,8 +1,5 @@
 FROM nvidia/cuda:10.2-devel-ubuntu18.04
 
-# Make RUN commands use `bash --login`:
-SHELL ["/bin/bash", "--login", "-c"]
-
 # install tools
 RUN apt update -y \
   && apt install -y software-properties-common \

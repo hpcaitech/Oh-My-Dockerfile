@@ -1,10 +1,17 @@
-FROM nvidia/cuda:11.1.1-cudnn8-devel-ubi8
-
-# Make RUN commands use `bash --login`:
-SHELL ["/bin/bash", "--login", "-c"]
+FROM nvidia/cuda:11.1.1-cudnn8-devel-ubuntu18.04
 
 # install tools
-RUN yum install -y wget vim git gettext unzip 
+RUN apt update -y \
+  && apt install -y software-properties-common \
+  && apt update -y \
+  && apt install -y wget vim build-essential libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip libz-dev
+
+# install git
+RUN wget https://github.com/git/git/archive/v2.18.0.zip \
+  && unzip v2.18.0.zip \
+  && cd ./git-2.18.0 \
+  && make prefix=/usr/local all \
+  && make prefix=/usr/local install
 
 # install conda
 RUN cd /opt \
