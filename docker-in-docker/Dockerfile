@@ -24,7 +24,7 @@ RUN apt-get update && \
     apt-get install -y nvidia-container-toolkit && \
     apt-get install -y nvidia-container-runtime
 
-RUN mkdir /workspace && mkdir /etc/docker
+RUN mkdir /workspace && mkdir -p /etc/docker
 
 COPY daemon.json /etc/docker/daemon.json
 
