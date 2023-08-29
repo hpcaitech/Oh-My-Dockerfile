@@ -5,7 +5,7 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 # create virtual env
 RUN  source /opt/conda/bin/activate base \
- && conda create -n pytorch python=3.8
+  && conda create -n pytorch python=3.8
 
 # install pytorch
 RUN source /opt/conda/bin/activate pytorch \
@@ -17,9 +17,14 @@ RUN cd /root \
   && source /opt/conda/bin/activate pytorch \
   && git clone https://github.com/NVIDIA/apex \
   && cd apex \
+  && git reset 2958e06e094146798ae42a748a77a509fd4695a0 \
   && pip install packaging \
-  && pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./ \
+  && pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings "--build-option=--cpp_ext" --config-settings "--build-option=--cuda_ext" ./ \
   && cd .. \
   && rm -rf ./apex
+
+# install xformer
+RUN source /opt/conda/bin/activate pytorch \ 
+  && pip install -v -U git+https://github.com/facebookresearch/xformers.git@main#egg=xformers
 
 ENV PATH "/opt/conda/envs/pytorch/bin:$PATH"
