@@ -7,7 +7,8 @@ RUN apt update && apt install --no-install-recommends -y ca-certificates build-e
     libblas3 liblapack3 gfortran liblapack-dev libblas-dev libhdf5-dev libffi-dev \
     libssl-dev zlib1g-dev xz-utils cython3 python3-h5py \
     libopenblas-dev libgmpxx4ldbl liblzma-dev \
-    libxml2 pciutils libgl1-mesa-glx libbz2-dev python3-pip python3-dev
+    libxml2 pciutils libgl1-mesa-glx libbz2-dev python3-pip python3-dev && \
+    apt clean && rm -rf /var/lib/apt/lists/*
 
 # download toolkit
 RUN wget https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/CANN/CANN%207.0.RC1/Ascend-cann-kernels-910_7.0.RC1_linux.run https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/CANN/CANN%207.0.RC1/Ascend-cann-kernels-910b_7.0.RC1_linux.run https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/CANN/CANN%207.0.RC1/Ascend-cann-toolkit_7.0.RC1_linux-aarch64.run
