@@ -31,9 +31,15 @@ RUN source /opt/conda/bin/activate pytorch \
 # install flash-attention
 RUN cd /root \
   && source /opt/conda/bin/activate pytorch \
-  && git clone -b v2.0.5 https://github.com/Dao-AILab/flash-attention \
+  && git clone -b v2.0.5 https://github.com/Dao-AILab/flash-attention.git \
   && cd flash-attention/ \
-  && python setup.py install \
+  && pip install . \
+  && cd ./csrc/xentropy \
+  && pip install . \
+  && cd ../layer_norm \
+  && pip install . \
+  && cd ../rotary \
+  && pip install . \
   && rm -rf /root/flash-attention
 
 ENV PATH "/opt/conda/envs/pytorch/bin:$PATH"
