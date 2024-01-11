@@ -1,4 +1,4 @@
-FROM hpcaitech/cuda-conda:11.8
+FROM hpcaitech/cuda-conda:12.1
 
 # Make RUN commands use `bash --login`:
 SHELL ["/bin/bash", "--login", "-c"]
@@ -10,7 +10,7 @@ RUN  source /opt/conda/bin/activate base \
 # install pytorch
 RUN source /opt/conda/bin/activate pytorch \
   && conda install -y pip \
-  && pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+  && conda install -y pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
 
 # install apex
 RUN cd /root \
