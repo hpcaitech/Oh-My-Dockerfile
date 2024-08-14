@@ -5,7 +5,7 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 # create virtual env
 RUN  source /opt/conda/bin/activate base \
- && conda create -n pytorch python=3.9
+ && conda create -n pytorch python=3.10.14
 
 # install pytorch
 RUN source /opt/conda/bin/activate pytorch \
