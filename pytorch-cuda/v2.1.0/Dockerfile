@@ -10,7 +10,8 @@ RUN  source /opt/conda/bin/activate base \
 # install pytorch
 RUN source /opt/conda/bin/activate pytorch \
   && conda install -y pip \
-  && conda install -y pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+  && conda install -y pytorch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 pytorch-cuda=12.1 -c pytorch -c nvidia
+
 
 # install apex
 RUN cd /root \
@@ -24,7 +25,7 @@ RUN cd /root \
 
 # install xformer
 RUN source /opt/conda/bin/activate pytorch \
-    && pip install xformers
+    && pip install xformers==v0.0.23.post1
 
 ENV PATH "/opt/conda/envs/pytorch/bin:$PATH"
 
