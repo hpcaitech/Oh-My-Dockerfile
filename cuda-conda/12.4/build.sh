@@ -1,0 +1,1 @@
+docker build -t hpcaitech/cuda-conda:12.4 .
