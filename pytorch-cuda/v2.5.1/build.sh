@@ -1,1 +1,1 @@
-docker build -t hpcaitech/pytorch-cuda:2.4.0-12.5.1 .
+docker build -t hpcaitech/pytorch-cuda:2.5.1-12.4.1 .
